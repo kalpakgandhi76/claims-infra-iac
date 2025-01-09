@@ -43,3 +43,8 @@ variable "webapp_name" {
   description = "The Web app name."
   default     = "F1"
 }
+
+variable "location" {
+  description = "Location of the resource."
+  default     = "East US"
+}

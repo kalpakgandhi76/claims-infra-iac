@@ -10,12 +10,12 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
-  location = "East US"
+  location = var.location
 }
 
 resource "azurerm_service_plan" "asp" {
   name                = var.asp_name
-  location            = azurerm_resource_group.rg.location
+  location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = var.asp_os_type
   sku_name            = var.asp_sku
@@ -24,14 +24,14 @@ resource "azurerm_service_plan" "asp" {
 resource "azurerm_windows_web_app" "webapp" {
   name                = var.webapp_name
   resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_service_plan.rg.location
+  location            = var.location
   service_plan_id     = azurerm_service_plan.asp.id
 
   site_config {
     always_on = false
     application_stack {
-      current_stack = dotnetcore
-      dotnet_core_version = v9.0
+      current_stack = "dotnetcore"
+      dotnet_core_version = "v4.0"
     }
      
   }
