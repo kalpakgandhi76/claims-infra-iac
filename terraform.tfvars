@@ -1,5 +1,6 @@
 resource_group_name = "claims-infra-group"
 asp_name = "claims-infra-asp"
-asp_os_type = "windows"
+asp_os_type = "Windows"
 asp_sku ="F1"
 webapp_name = "claims-backend-api"
+location = "East US"
